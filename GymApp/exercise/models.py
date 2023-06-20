@@ -10,7 +10,7 @@ class MuscleGroup(models.Model):
     
 class Exercise(models.Model):
     name = models.CharField(max_length=200)
-    description = models.TextField(max_length=1000, blank=True, null=True)
+    description = models.TextField(max_length=2000, blank=True, null=True)
     muscle = models.ManyToManyField(MuscleGroup)
     isRepEx = models.BooleanField(default=True)
 
@@ -39,8 +39,10 @@ class SeriesWorkout(models.Model):
 
 class Traning(models.Model):
     name = models.CharField(max_length=200)
-    workout = models.ManyToManyField(CircuitWorkout or SeriesWorkout) 
-    
+    cWorkout = models.ManyToManyField(CircuitWorkout) 
+    sWorkout = models.ManyToManyField(SeriesWorkout)
 
 
+    def __str__(self):
+        return self.name
     
