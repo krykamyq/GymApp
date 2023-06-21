@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if page == 'login' %}
+  <h1>Login</h1>
+
+  <form method="post" action="">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    <input type="submit" value="Login">
+  </form>
+
+  <a href="{% url 'registration' %}">Do you want to register?</a>
+
+{% endif %}
+{% if page == 'registration' %}
+<h1>Register</h1>
+
+<form method="post" action="{% url 'registration' %}">
+  {% csrf_token %}
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required><br><br>
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required><br><br>
+  <label for="confirm_password">Confirm Password:</label>
+  <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+  <input type="submit" value="Register">
+</form>
+
+<a href="{% url 'login' %}">Do you have an account?</a>
+
+{% endif %}
+{% endblock content %}
