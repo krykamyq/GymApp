@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GymApp - Personalized Training and Progress Tracking</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+  <header>
+    <div class="logo">GymApp</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Training Plans</a></li>
+        <li><a href="#">Progress Tracking</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="content">
+    <h1>Welcome to GymApp</h1>
+    <p>Create personalized training plans, track your progress, and achieve your fitness goals!</p>
+    <p>
+      <a class="btn" href="/register">Get Started</a>
+      <a class="btn" href="/login">Login</a>
+    </p>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 GymApp. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
