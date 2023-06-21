@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1>List of exercises: </h1>
+
+<ul class="additional-menu">
+    {% for exercise in exercises %}
+    <li><a href="#">{{ exercise.name }}</a></li>
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}

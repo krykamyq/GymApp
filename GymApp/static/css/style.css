@@ -15,21 +15,48 @@ body {
     font-weight: bold;
   }
   
+  nav {
+    background-color: #333;
+    height: 50px;
+  }
+  
   nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
   }
   
-  nav ul li {
-    display: inline-block;
+  nav ul.main-menu li {
+    margin-right: 20px;
+  }
+  
+  ul.additional-menu {
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+    display:block;
+    justify-content: center;
+  }
+  
+  ul.additional-menu li {
     margin-right: 10px;
   }
   
-  nav ul li a {
-    color: #fff;
+  nav ul li a,
+  ul.additional-menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: #4caf50;
     text-decoration: none;
   }
+
+  nav ul li a:hover,
+  ul.additional-menu li a:hover {
+    background-color: #555;
+  }
+  
   
   .content {
     text-align: center;
@@ -61,4 +88,4 @@ body {
     padding: 10px;
     text-align: center;
   }
-  
+

@@ -10,18 +10,12 @@
   <header>
     <div class="logo">GymApp</div>
     <nav>
-      <ul>
-        <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="#">Training Plans</a></li>
-        <li><a href="#">Progress Tracking</a></li>
-        <li><a href="#">Community</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
+      {% include 'navbar.html' %}
     </nav>
   </header>
   
   <div class="content">
-   
+
 
       {% block content %}
 
