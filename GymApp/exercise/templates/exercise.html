@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 
 {% block content %}
-{% if request.user.is_authenticated %}
+{% if request.user.is_authenticatedcd  %}
 <a href="{% url 'createexercise' %}">Create exercise</a>
 {% endif %}
 <h1>List of exercises: </h1>

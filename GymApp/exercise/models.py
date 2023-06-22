@@ -13,6 +13,7 @@ class Exercise(models.Model):
     description = models.TextField(max_length=2000, blank=True, null=True)
     muscle = models.ManyToManyField(MuscleGroup)
     isRepEx = models.BooleanField(default=True)
+    isAccepted = models.BooleanField(default=False)
 
 
     def __str__(self):

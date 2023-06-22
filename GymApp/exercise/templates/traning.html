@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+    <h1>List of training: </h1>
+
+    <div class="exerciselist">
+        <ul class="additional-menu">
+            {% for traning in tranings %}
+            <li>
+                <a href="{% url 'traning' traning.id %}" >{{ traning.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        </div>
+
+{% endblock content %}

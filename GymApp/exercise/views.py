@@ -14,8 +14,21 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request , "home.html")
 
+def tranings(request):
+    tranings = Traning.objects.all()
+
+    context ={'tranings': tranings}
+    return render(request, 'traning.html',context)
+
+def traning(request, pk):
+    traning = Traning.objects.get(id=pk)
+
+    context = {'traning':traning}
+    return render(request, 'traningg.html', context)
+
+
 def exercise(request):
-    exercises = Exercise.objects.all()
+    exercises = Exercise.objects.filter(isAccepted=True)
 
     context = {'exercises': exercises}
     return render(request, 'exercise.html', context)
