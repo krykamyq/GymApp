@@ -5,6 +5,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import *
+from .forms import ExerciseForm
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 
 def home(request):
@@ -16,8 +20,18 @@ def exercise(request):
     context = {'exercises': exercises}
     return render(request, 'exercise.html', context)
  
-
-
+@login_required(login_url='login')
+def create_exercise(request):
+    if request.method == 'POST':
+        form = ExerciseForm(request.POST)
+        if form.is_valid():
+            exercise = form.save()
+            return redirect('exercise')
+    else:
+        form = ExerciseForm()
+    
+    context = {'form': form}
+    return render(request, 'createexercise.html', context)
 
 def login_page(request):
 

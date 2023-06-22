@@ -8,5 +8,6 @@ urlpatterns = [
     path('registration', views.registration_page, name='registration'),
 
 
-    path('exercise', views.exercise, name = 'exercise')
+    path('exercise', views.exercise, name = 'exercise'),
+    path('exercise/create', views.create_exercise, name="createexercise")
 ]
