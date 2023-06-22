@@ -18,6 +18,10 @@ class Exercise(models.Model):
     def __str__(self):
         return self.name
     
+    def muscle_names(self):
+        return ", ".join([muscle.name for muscle in self.muscle.all()])
+
+    
 class Reps(models.Model):
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
     reps = models.PositiveIntegerField()

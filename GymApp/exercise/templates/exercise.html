@@ -3,12 +3,19 @@
 {% block content %}
 
 <h1>List of exercises: </h1>
-
+<div class="exerciselist">
 <ul class="additional-menu">
     {% for exercise in exercises %}
-    <li><a href="#">{{ exercise.name }}</a></li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle">{{ exercise.name }}</a>
+        <ul class="dropdown-menu">
+            <li>{{exercise.muscle_names}}
+            </li>
+            <li>{{ exercise.description }}</li>
+        </ul>
+    </li>
     {% endfor %}
 </ul>
-
+</div>
 
 {% endblock content %}

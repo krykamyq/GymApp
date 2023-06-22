@@ -31,17 +31,23 @@ body {
   nav ul.main-menu li {
     margin-right: 20px;
   }
-  
+  .exerciselist{
+    padding: 10px;
+    
+  }
   ul.additional-menu {
     list-style-type: none;
-    margin: 20px 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
     padding: 0;
-    display:block;
+    display:list-item;
     justify-content: center;
   }
   
   ul.additional-menu li {
     margin-right: 10px;
+    
   }
   
   nav ul li a,
@@ -56,12 +62,33 @@ body {
   ul.additional-menu li a:hover {
     background-color: #555;
   }
+
+  ul li ul {
+    list-style-type: none;
+  }
+  .dropdown-menu {
+    display: none;
+    text-align: center;
+    top: 100%;
+    left: 0;
+    background-color: #666;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown-menu li {
+    padding: 10px;
+    
+    
+  }
+  
+
   
   
   .content {
     text-align: center;
     margin-top: 40px;
     padding: 20px;
+  
   }
   
   h1 {
