@@ -7,8 +7,8 @@
 
    
     <ul>
-        {% for w in workout%}
-        <li>{w.name}</li>
+        {% for workout in traning.workout.all %}
+        <li>{{ workout }}</li>
         {% endfor %}
     </ul>
 
