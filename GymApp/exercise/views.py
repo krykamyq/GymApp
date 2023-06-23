@@ -14,20 +14,27 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request , "home.html")
 
+
+@login_required(login_url='login')
 def tranings(request):
-    tranings = Traning.objects.all()
+    tranings = Traning.objects.filter(user = request.user)
 
     context ={'tranings': tranings}
     return render(request, 'traning.html',context)
 
 def traning(request, pk):
     traning = Traning.objects.get(id=pk)
-    
-
     context = {'traning':traning}
     return render(request, 'traningg.html', context)
 
+def deleteExerciseFromTrening(request,pk):
+    reps = Reps.objects.get(id=pk)
+    if request.method == 'POST':
+        reps.delete()
+        return redirect('tranings')
 
+    context = {'reps' : reps}
+    return render(request, 'traningg.html', context)
 def exercise(request):
     exercises = Exercise.objects.filter(isAccepted=True)
 

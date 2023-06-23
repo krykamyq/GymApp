@@ -3,6 +3,7 @@
 
 {% block content %}
 
+{% if tranings %} 
     <h1>List of training: </h1>
 
     <div class="exerciselist">
@@ -14,5 +15,9 @@
             {% endfor %}
         </ul>
         </div>
+        
+{% else %}
+        <a href="">Add workout</a>
+{% endif %}
 
 {% endblock content %}

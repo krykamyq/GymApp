@@ -12,6 +12,8 @@ urlpatterns = [
     path('exercise/create', views.create_exercise, name="createexercise"),
 
     path('tranings', views.tranings, name='tranings'),
-    path('tranings/<str:pk>', views.traning, name='traning')
+    path('tranings/<str:pk>', views.traning, name='traning'),
+
+    path('deleteExercise/<str:pk>', views.deleteExerciseFromTrening, name='deleteExercise')
 
 ]

@@ -3,15 +3,6 @@
 {% block content %}
 <h1>Welcome to GymApp</h1>
 <p>Create personalized training plans, track your progress, and achieve your fitness goals!</p>
-{% if request.user.is_authenticated %}
-<p>
-    <a class="btn" href="{% url 'logout' %} ">Logout</a>
-</p>
-{% else %}
-<p>
-  <a class="btn" href="{% url 'registration' %}">Get Started</a>
-  <a class="btn" href="{% url 'login' %}">Login</a>
-</p>
-{% endif %}
+
 
 {% endblock content %}
