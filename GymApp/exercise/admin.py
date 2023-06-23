@@ -5,7 +5,5 @@ from .models import *
 
 admin.site.register(Exercise)
 admin.site.register(MuscleGroup)
-
-admin.site.register(CircuitWorkout)
-
+admin.site.register(Reps)
 admin.site.register(Traning)

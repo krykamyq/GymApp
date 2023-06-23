@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -26,28 +27,18 @@ class Exercise(models.Model):
 class Reps(models.Model):
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
     reps = models.PositiveIntegerField()
+    rest = models.PositiveIntegerField()
+
 
     def __str__(self):
-        return f"{self.exercise.name} - Reps: {self.reps}"
+        return f"{self.exercise.name} - Reps: {self.reps} - Rest time: {self.rest}"
     
-
-class CircuitWorkout(models.Model):
-    exercises = models.ManyToManyField(Reps)
-    rest = models.IntegerField()
-    cicles = models.PositiveIntegerField()
-
-
-class SeriesWorkout(models.Model):
-    exercise = models.ForeignKey(Reps, on_delete=models.CASCADE)
-    series = models.PositiveIntegerField()
-
 
 class Traning(models.Model):
     name = models.CharField(max_length=200)
-    cWorkout = models.ManyToManyField(CircuitWorkout) 
-    sWorkout = models.ManyToManyField(SeriesWorkout)
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    workout = models.ManyToManyField(Reps)
+  
 
     def __str__(self):
         return self.name
-    

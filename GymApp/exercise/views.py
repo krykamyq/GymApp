@@ -22,6 +22,7 @@ def tranings(request):
 
 def traning(request, pk):
     traning = Traning.objects.get(id=pk)
+    
 
     context = {'traning':traning}
     return render(request, 'traningg.html', context)
