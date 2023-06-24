@@ -27,14 +27,13 @@ def traning(request, pk):
     context = {'traning':traning}
     return render(request, 'traningg.html', context)
 
-def deleteExerciseFromTrening(request,pk):
-    reps = Reps.objects.get(id=pk)
+def deleteExerciseFromTrening(request,pk,pm):
+    traning = Traning.objects.get(id=pk)
     if request.method == 'POST':
-        reps.delete()
-        return redirect('tranings')
+        traning.workout.remove(pm)
+        return redirect('traning',pk)
 
-    context = {'reps' : reps}
-    return render(request, 'traningg.html', context)
+    
 def exercise(request):
     exercises = Exercise.objects.filter(isAccepted=True)
 

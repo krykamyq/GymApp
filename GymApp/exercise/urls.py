@@ -14,6 +14,6 @@ urlpatterns = [
     path('tranings', views.tranings, name='tranings'),
     path('tranings/<str:pk>', views.traning, name='traning'),
 
-    path('deleteExercise/<str:pk>', views.deleteExerciseFromTrening, name='deleteExercise')
+    path('delete/<str:pk>/<str:pm>', views.deleteExerciseFromTrening, name='deleteExercise')
 
 ]

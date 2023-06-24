@@ -10,7 +10,7 @@
         {% for workout in traning.workout.all %}
 
         <li>{{ workout }}
-            <form method="post" action="{% url 'deleteExercise' workout.id %}">
+            <form method="post" action="{% url 'deleteExercise' traning.id workout.id %}">
                 {% csrf_token %}
                 <input type="submit" value="X">
             </form>
