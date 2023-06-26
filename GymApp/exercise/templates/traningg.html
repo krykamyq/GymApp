@@ -5,17 +5,19 @@
 
     <h1>{{ traning.name }}</h1>
 
-   
-    <ul>
-        {% for workout in traning.workout.all %}
+    <a href="{% url 'addexercise' traning.id%}">Add exercise</a>
 
-        <li>{{ workout }}
-            <form method="post" action="{% url 'deleteExercise' traning.id workout.id %}">
+   
+
+        {% for workout in traning.workout.all %}
+        <div>
+       
+            {{ workout }} <form method="post" action="{% url 'deleteExercise' traning.id workout.id %}">
                 {% csrf_token %}
                 <input type="submit" value="X">
             </form>
-        </li>
+        </div>
         {% endfor %}
-    </ul>
+
 
 {% endblock content %}

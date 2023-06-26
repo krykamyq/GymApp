@@ -14,6 +14,11 @@ urlpatterns = [
     path('tranings', views.tranings, name='tranings'),
     path('tranings/<str:pk>', views.traning, name='traning'),
 
-    path('delete/<str:pk>/<str:pm>', views.deleteExerciseFromTrening, name='deleteExercise')
+    path('delete/<str:pk>/<str:pm>', views.deleteExerciseFromTrening, name='deleteExercise'),
+    path('addexercise/<str:pk>', views.addExercise, name="addexercise"),
+    
+    path('addWorkout', views.addWorkout, name='addWorkout'),
+    path('deleteTraning/<str:pk>', views.deleteTrening, name= 'deleteTraning' )
+    
 
 ]

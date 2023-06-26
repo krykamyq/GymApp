@@ -11,13 +11,19 @@
             {% for traning in tranings %}
             <li>
                 <a href="{% url 'traning' traning.id %}" >{{ traning.name }}</a>
+                <form method="post" action="{% url 'deleteTraning' traning.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="X">
+                </form>
+
+               
             </li>
             {% endfor %}
         </ul>
         </div>
         
-{% else %}
-        <a href="">Add workout</a>
-{% endif %}
 
+        
+{% endif %}
+<a href="{% url 'addWorkout'%}">Add workout</a>
 {% endblock content %}

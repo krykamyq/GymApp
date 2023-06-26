@@ -1,11 +1,10 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import *
-from .forms import ExerciseForm
+from .forms import ExerciseForm,ExerciseAdd,TraningForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -28,10 +27,50 @@ def traning(request, pk):
     return render(request, 'traningg.html', context)
 
 def deleteExerciseFromTrening(request,pk,pm):
-    traning = Traning.objects.get(id=pk)
+    rep = Reps.objects.get(id= pm)
     if request.method == 'POST':
-        traning.workout.remove(pm)
+        rep.delete()
         return redirect('traning',pk)
+
+
+def deleteTrening(request,pk):
+    traning= Traning.objects.get(id= pk)
+    if request.method == 'POST':
+        traning.delete()
+        return redirect('tranings')
+    
+def addWorkout(request):
+    page = 'createworkout'
+
+    if request.method == 'POST':
+        form = TraningForm(request.POST)
+        if form.is_valid():
+            form.instance.user = request.user
+            traning = form.save()
+            return redirect('traning', traning.id)
+    else:
+        form = TraningForm()
+    
+    context = {'page': page, 'form': form}
+    return render(request, 'addcreate.html', context)
+    
+@login_required(login_url='login')
+def addExercise(request,pk):
+    page = 'add'
+    
+    reps = Exercise.objects.all()
+    traning = Traning.objects.get(id = pk)
+    if request.method == 'POST':
+        form = ExerciseAdd(request.POST)
+        if form.is_valid():
+            reps = form.save()
+            traning.workout.add(reps)
+            return redirect('traning', pk)
+    else:
+        form = ExerciseAdd()
+    
+    context = {'form': form, 'page': page}
+    return render(request, 'addcreate.html', context)
 
     
 def exercise(request):
@@ -42,6 +81,7 @@ def exercise(request):
  
 @login_required(login_url='login')
 def create_exercise(request):
+    page = 'create'
     if request.method == 'POST':
         form = ExerciseForm(request.POST)
         if form.is_valid():
@@ -50,8 +90,8 @@ def create_exercise(request):
     else:
         form = ExerciseForm()
     
-    context = {'form': form}
-    return render(request, 'createexercise.html', context)
+    context = {'form': form, 'page': page}
+    return render(request, 'addcreate.html', context)
 
 def login_page(request):
 

@@ -1,8 +1,11 @@
 {% extends 'main.html' %}
 
 {% block content %}
-
+{% if page == 'create' %}
 <h1>Create Exercise</h1>
+{% elif page == 'add' %}
+<h1>Add Exercise:</h1>
+{%endif%}
 <form method="POST">
   {% csrf_token %}
   {{ form.as_p }}
